@@ -1,0 +1,183 @@
+{
+  "swagger": "2.0",
+  "basePath": "/",
+  "paths":
+    {
+      "/api/company":
+        {
+          "parameters":
+            [
+              {
+                "description": "An ID",
+                "name": "todo_id",
+                "type": "string",
+                "in": "query",
+              },
+            ],
+          "get":
+            {
+              "responses":
+                {
+                  "500": { "description": "Failed" },
+                  "200": { "description": "Success" },
+                },
+              "summary": "Company\ub97c \ub4f1\ub85d\ud558\uac70\ub098 \uc0ad\uc81c\ud558\ub294 \uc5ed\ud560\uc744 \uc218\ud589\ud569\ub2c8\ub2e4",
+              "operationId": "get_company",
+              "tags": ["Company"],
+            },
+        },
+      "/api/company/tag":
+        {
+          "post":
+            {
+              "responses":
+                {
+                  "500": { "description": "Failed" },
+                  "200": { "description": "Success" },
+                },
+              "summary": "\ud68c\uc0ac\uc5d0 \ud0dc\uadf8 \uc815\ubcf4\ub97c \ucd94\uac00\ud569\ub2c8\ub2e4",
+              "operationId": "post_company_tag",
+              "parameters":
+                [
+                  {
+                    "name": "payload",
+                    "required": true,
+                    "in": "body",
+                    "schema": { "$ref": "#/definitions/company_tag_add" },
+                  },
+                ],
+              "tags": ["Company"],
+            },
+        },
+      "/api/company/{company_id}/tag/{tag_id}":
+        {
+          "parameters":
+            [
+              {
+                "description": "company, todo id",
+                "name": "company,todo id ",
+                "type": "string",
+                "in": "query",
+              },
+              {
+                "name": "company_id",
+                "in": "path",
+                "required": true,
+                "type": "integer",
+              },
+              {
+                "name": "tag_id",
+                "in": "path",
+                "required": true,
+                "type": "integer",
+              },
+            ],
+          "delete":
+            {
+              "responses":
+                {
+                  "500": { "description": "Failed" },
+                  "200": { "description": "Success" },
+                },
+              "operationId": "delete_company_tag_delete",
+              "tags": ["Company"],
+            },
+        },
+      "/api/search":
+        {
+          "get":
+            {
+              "responses":
+                {
+                  "500": { "description": "Failed" },
+                  "200": { "description": "Success" },
+                },
+              "summary": "\ud68c\uc0ac \uac80\uc0c9\uc744 \ud1b5\ud574 \uc774\ub984\uc744 \ud3ec\ud568\ud558\ub294 \ud68c\uc0ac\ub97c \ucc3e\uc2b5\ub2c8\ub2e4",
+              "operationId": "get_search_company",
+              "tags": ["Search"],
+            },
+        },
+      "/api/search/company":
+        {
+          "parameters":
+            [
+              {
+                "description": "company_tag",
+                "name": "company_tag",
+                "type": "string",
+                "in": "query",
+              },
+            ],
+          "get":
+            {
+              "responses":
+                {
+                  "500": { "description": "Failed" },
+                  "200": { "description": "Success" },
+                },
+              "summary": "\ud0dc\uadf8\ub97c \ud1b5\ud574 \uac80\uc0c9\ub41c \ud68c\uc0ac\ub4e4\uc758 \uc815\ubcf4\ub97c \uac00\uc838\uc635\ub2c8\ub2e4",
+              "operationId": "get_search",
+              "tags": ["Search"],
+            },
+        },
+      "/api/tag":
+        {
+          "parameters":
+            [
+              {
+                "description": "An ID",
+                "name": "todo_id",
+                "type": "string",
+                "in": "query",
+              },
+            ],
+          "get":
+            {
+              "responses":
+                {
+                  "500": { "description": "Failed" },
+                  "200": { "description": "Success" },
+                },
+              "summary": "Tag\uc5d0 \uad00\ub828\ub41c API\ub97c \uc218\ud589\ud569\ub2c8\ub2e4",
+              "operationId": "get_tag",
+              "tags": ["Tag"],
+            },
+        },
+    },
+  "info":
+    {
+      "title": "\uae40\uc9c0\ud615-\uc6d0\ud2f0\ub4dc\ub7a9 API\uba85\uc138\uc11c",
+      "version": "0.1",
+      "description": "API\uacbd\ub85c, \ud30c\ub77c\ubbf8\ud130, query\ub4f1\uc744 \ud655\uc778\ud560 \uc218 \uc788\ub294 API\uba85\uc138\uc11c \uc785\ub2c8\ub2e4.",
+      "termsOfService": "/",
+      "license": { "name": "kim_jihyung" },
+    },
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
+  "tags":
+    [
+      { "name": "Tag", "description": "Tag \uad00\ub828 API." },
+      { "name": "Company", "description": "Company \uad00\ub828 API." },
+      {
+        "name": "Search",
+        "description": "Search(\ud0d0\uc0c9) \uad00\ub828 API.",
+      },
+    ],
+  "definitions":
+    {
+      "company_tag_add":
+        {
+          "properties":
+            {
+              "company_id": { "type": "integer" },
+              "tag_id": { "type": "integer" },
+            },
+          "type": "object",
+        },
+    },
+  "responses":
+    {
+      "ParseError": { "description": "When a mask can't be parsed" },
+      "MaskError": { "description": "When any error occurs on mask" },
+    },
+}
