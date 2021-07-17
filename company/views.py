@@ -6,19 +6,7 @@ from company.services import company_tag_add, delete_company_tag
 Company_API = Namespace(
     name="Company",
     description="Company 관련 API.",
-    # validate=True
 )
-
-# @Todo.route('')
-# class TodoPost(Resource):
-# @Todo.expect(todo_fields)  # 특정 스키마가 들어올것을 기대합니다. (위에서 만든것)
-# @Todo.response(201, 'Success', todo_fields_with_id)  # 특정 스키마를 반환합니다.
-# def post(self):
-#     """Todo 리스트에 할 일을 등록 합니다."""
-#     return {
-#         'todo_id': idx,
-#         'data': todos[idx]
-#     }, 201
 
 company_tag_add_fields = Company_API.model('company_tag_add', {
     'company_id': fields.Integer,
@@ -37,9 +25,6 @@ class Company(Resource):
             'todo_id': 1,
             'data': 1
         }
-
-# @Company_API.route('/tag')
-# @Company_API.doc(params={'todo_id': 'An ID'})
 
 
 @Company_API.route('/tag')
