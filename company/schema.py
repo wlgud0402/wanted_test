@@ -1,9 +1,10 @@
 from server.config import ma
+from marshmallow import fields
 
 
 class TestSchema(ma.Schema):
-    class Meta:
-        fields = ('id', 'name')
+    id = fields.Int()
+    name = fields.Str()
 
 
 # Init Schema

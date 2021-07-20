@@ -1,14 +1,16 @@
 from server.config import ma
+from marshmallow import fields
 
 
 class SearchCompanySchema(ma.Schema):
-    class Meta:
-        fields = ('id', 'name', 'country_type')
+    id = fields.Int()
+    name = fields.Str()
+    country_type = fields.Str()
 
 
 class SearchTagSchema(ma.Schema):
-    class Meta:
-        fields = ('tag_id', 'name')
+    tag_id = fields.Int()
+    name = fields.Str()
 
 
 search_companys_schema = SearchCompanySchema(many=True)
