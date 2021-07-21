@@ -3,14 +3,13 @@ from marshmallow import fields
 
 
 class SearchCompanySchema(ma.Schema):
-    id = fields.Int()
-    name = fields.Str()
-    country_type = fields.Str()
+    class Meta:
+        fields = ('id', 'name', 'country_type')
 
 
 class SearchTagSchema(ma.Schema):
-    tag_id = fields.Int()
-    name = fields.Str()
+    class Meta:
+        fields = ('tag_id', 'name')
 
 
 search_companys_schema = SearchCompanySchema(many=True)

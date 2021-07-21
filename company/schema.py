@@ -3,8 +3,8 @@ from marshmallow import fields
 
 
 class TestSchema(ma.Schema):
-    id = fields.Int()
-    name = fields.Str()
+    class Meta:
+        fields = ('id', 'name')
 
 
 # Init Schema
